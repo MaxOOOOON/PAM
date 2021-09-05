@@ -67,19 +67,21 @@ Vagrant.configure("2") do |config|
   useradd user1 
   useradd user2
   groupadd admin
-  usermod -aG admin user1
+  sudo usermod -aG admin user1
+  sudo usermod -aG admin vagrant
   echo "Passwd123@" | sudo passwd --stdin user1
   echo "Passwd123@" | sudo passwd --stdin user2
-  sed -i 's/^PasswordAuthentication.*$/PasswordAuthentication yes/' /etc/ssh/sshd_config && systemctl restart sshd.service"
-  sed -i '6iaccount    required     pam_exec.so /usr/local/bin/check_user.sh' /etc/pam.d/sshd
-  cp /vagrant_data/check_user.sh /usr/local/bin/check_user.sh
+  sudo bash -c "sed -i 's/^PasswordAuthentication.*$/PasswordAuthentication yes/' /etc/ssh/sshd_config && systemctl restart sshd.service"
+  sudo cp /vagrant_data/check_user.sh /usr/local/bin/check_user.sh
   chmod +x /usr/local/bin/check_user.sh
+  sudo sed -i '6iaccount    required     pam_exec.so /usr/local/bin/check_user.sh' /etc/pam.d/sshd
+  
 
   sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   sudo yum install docker-ce -y
-  systemctl enable docker 
-  systemctl start docker
+  sudo systemctl enable docker 
+  sudo systemctl start docker
   sudo usermod -aG docker user1
-  cp /vagrant_data/10-docker.rules /etc/polkit-1/rules.d/10-docker.rules
+  sudo cp /vagrant_data/10-docker.rules /etc/polkit-1/rules.d/10-docker.rules
   SHELL
 end
