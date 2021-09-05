@@ -23,6 +23,8 @@
     chmod +x /usr/local/bin/check_user.sh
 
 Проверка
+![изображение](https://user-images.githubusercontent.com/36797330/132138002-abb3f0f4-bd66-4649-a689-989bb8993023.png)
+![изображение](https://user-images.githubusercontent.com/36797330/132138016-3525c3b0-92e9-4acd-a4ef-9fbee88a5423.png)
 
 
 
@@ -54,4 +56,6 @@ cat /etc/polkit-1/rules.d/10-docker.rules
         }
     })
 
+![изображение](https://user-images.githubusercontent.com/36797330/132138041-6dc57fed-f472-428e-af13-716140a77549.png)
+![изображение](https://user-images.githubusercontent.com/36797330/132138052-149bdf52-d5d1-4d84-b574-107080a2a03f.png)
 
